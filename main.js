@@ -6,7 +6,7 @@ for (let i = 90; i < 3000; i++) {
   const url = `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`;
 
   setTimeout(() => {
-    const img = new Image(64, 64);
+    const img = new Image();
     img.src = url;
     img.title = `${code}`;
     img.addEventListener('load', () => {
