@@ -5,11 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cozy Stickers</title>
-    <script defer src="main.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/css/materialize.min.css"
+    />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/js/materialize.min.js"
+    ></script>
+
+    <script defer type="module" src="main.js"></script>
     <style>
       html,
       body {
         background-color: #161922;
+        color: white;
+      }
+
+      input {
         color: white;
       }
 
@@ -24,9 +38,26 @@
         grid-auto-flow: row;
         grid-template-columns: repeat(auto-fill, 64px);
       }
+
+      .hidden {
+        display: none;
+      }
     </style>
   </head>
   <body>
-    <div id="container"></div>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" id="searchBox" class="autocomplete" />
+            <label for="searchBox">Search</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="container" class="col s12"></div>
+    </div>
   </body>
 </html>
