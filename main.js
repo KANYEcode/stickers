@@ -1,3 +1,11 @@
+const copyToClipboard = str => {
+  navigator.clipboard.writeText(`ǀ${str}ǀ`);
+  M.toast({ text: `Copied ${str}` });
+};
+
+const sanitize = str => str.trim().toLowerCase().replaceAll(/[.,\/#!$%\^&\*;:{}=\-_`~()'"]/g, '');
+
+
 // load and process tags
 let labels = {};
 let csv = await(await fetch('tags.csv')).text()
@@ -5,14 +13,10 @@ csv.split('\r\n').slice(1).forEach(row => {
   let items = row.split(',');
   let code = items[1];
   let tags = items.slice(3).filter(i => i.length);
-  labels[code] = tags.join(' ').toLowerCase();
+  labels[code] = sanitize(tags.join(' '));
 });
 
 
-const copyToClipboard = str => {
-  navigator.clipboard.writeText(`ǀ${str}ǀ`);
-  M.toast({ text: `Copied ${str}` });
-};
 const container = document.getElementById('container');
 
 for (let i = 90; i < 3000; i++) {
@@ -32,4 +36,4 @@ for (let i = 90; i < 3000; i++) {
 }
 
 const searchBox = document.getElementById('searchBox');
-searchBox.addEventListener('input', e => container.childNodes.forEach(i => i.classList.toggle('hidden', !i.getAttribute('tags').includes(searchBox.value.trim().toLowerCase()))));
+searchBox.addEventListener('input', e => container.childNodes.forEach(i => i.classList.toggle('hidden', !i.getAttribute('tags').includes(sanitize(searchBox.value)))));
