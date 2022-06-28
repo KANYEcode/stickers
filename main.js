@@ -13,5 +13,5 @@ for (let i = 90; i < 3000; i++) {
       img.addEventListener('click', () => copyToClipboard(img.title));
       container.appendChild(img);
     });
-  }, 1 * i);
+  }, 5 * i);
 }
