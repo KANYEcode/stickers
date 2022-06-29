@@ -24,7 +24,7 @@ for (let i = 90; i < 5000; i++) {
   const url = `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`;
 
   const img = new Image();
-  img.style.display = 'none';
+  img.classList.add('hidden');
   img.src = url;
   img.title = `${code}`;
   img.setAttribute('tags', labels[code]);
@@ -33,7 +33,7 @@ for (let i = 90; i < 5000; i++) {
   container.appendChild(img);
 
   img.addEventListener('load', () => {
-    img.style.display = 'block';
+    img.classList.remove('hidden');
     img.addEventListener('click', () => copyToClipboard(img.title));
   });
 }
