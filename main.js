@@ -9,7 +9,7 @@ const sanitize = str => str.trim().toLowerCase().replaceAll(/[.,\/#!$%\^&\*;:{}=
 // load and process tags
 let labels = {};
 let csv = await(await fetch('tags.csv')).text()
-csv.split('\r\n').slice(1).forEach(row => {
+csv.split(/\r?\n/).slice(1).forEach(row => {
   let items = row.split(',');
   let code = items[1];
   let tags = items.slice(3).filter(i => i.length);
