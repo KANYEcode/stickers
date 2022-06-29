@@ -19,20 +19,23 @@ csv.split(/\r?\n/).slice(1).forEach(row => {
 
 const container = document.getElementById('container');
 
-for (let i = 90; i < 3000; i++) {
+for (let i = 90; i < 5000; i++) {
   const code = i.toString(36)
   const url = `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`;
 
-  setTimeout(() => {
-    const img = new Image();
-    img.src = url;
-    img.title = `${code}`;
-    img.setAttribute('tags', labels[code])
-    img.addEventListener('load', () => {
-      img.addEventListener('click', () => copyToClipboard(img.title));
-      container.appendChild(img);
-    });
-  }, 5 * i);
+  const img = new Image();
+  img.style.display = 'none';
+  img.src = url;
+  img.title = `${code}`;
+  img.setAttribute('tags', labels[code]);
+
+  img.addEventListener('error', () => img.remove());
+  container.appendChild(img);
+
+  img.addEventListener('load', () => {
+    img.style.display = 'block';
+    img.addEventListener('click', () => copyToClipboard(img.title));
+  });
 }
 
 const searchBox = document.getElementById('searchBox');
