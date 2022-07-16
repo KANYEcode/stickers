@@ -163,18 +163,18 @@ const inputObserver = new MutationObserver(changes => {
     let matches = Object.keys(stickerlabels).filter(codes => codes.includes(code));
     matches = matches.reduce((a, c) => [...a, ...stickerlabels[c]], []);
     matches.forEach(code => {
+      address = stickerUrlBase + `/${code}.webp`;
       const glicker = document.createElement('div');
-      glicker.setAttribute('sticker-url', `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`);
+      glicker.setAttribute('sticker-url', address);
       glicker.setAttribute('sticker-id', code);
       glicker.className = "cursor-pointer liststicker inlinesticker";
-      glicker.style.backgroundImage = `url('https://prd.foxtrotstream.xyz/a/stk/${code}.webp')`;
+      glicker.style.backgroundImage = `url('${address}')`;
       glicker.title = code;
       stickermenu.appendChild(glicker);
     });
   } else {
     document.getElementById('stickermenu')?.remove();
   }
-
 });
 
 const stickersObserver = new MutationObserver(list => {
@@ -194,11 +194,7 @@ const chatObserver = new MutationObserver(() => {
     sticker.setAttribute("sticker-id", id);
     sticker.setAttribute("sticker-url", `${stickerUrlBase}/${id}.webp`);
     sticker.setAttribute("title", id);
-    if (GM_getValue("savedstickers", []).includes(id)) {
-      sticker.classList.add("saved");
-    } else {
-      sticker.classList.remove("saved");
-    }
+    sticker.classList.toggle('saved', GM_getValue("savedstickers", []).includes(id));
     if (!sticker.querySelector(".saved-toggle")) {
       sticker.insertAdjacentHTML("beforeend", `<div class="saved-toggle"></div>`);
     }
