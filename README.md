@@ -18,3 +18,5 @@ Examples:
 > |pepe
 
 will display duck or pepe stickers.
+
+_Keyboard navigation added by Mr. Dale Jones_
