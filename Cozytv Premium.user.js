@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Cozy.tv Premium
 // @namespace    Cozy.tv
-// @version      1.1.2
+// @version      1.1.3
 // @description  Display & save any cozy.tv sticker
 // @author       KANYE
 // @match        https://cozy.tv/*
@@ -217,6 +217,7 @@ const inputObserver = new MutationObserver((changes) => {
       document.getElementById("stickermenu").innerHTML = "";
       stickerMenuSelectedIndex = 0;
     }
+
     let matches = Object.keys(stickerlabels).filter((codes) =>
       codes.includes(code)
     );
@@ -233,6 +234,7 @@ const inputObserver = new MutationObserver((changes) => {
       stickermenu.appendChild(glicker);
       stickerMenuElems.push(glicker);
     });
+    stickerMenuElems[stickerMenuSelectedIndex].classList.add("border-gray", "border-2");
   } else {
     document.getElementById("stickermenu")?.remove();
     stickerMenuVisible = false;
@@ -341,6 +343,12 @@ document.addEventListener("keydown", (e) => {
         setTimeout(() => {
           div.focus();
           div.dispatchEvent(new Event("focus"));
+          let range = document.createRange();
+          let sel = window.getSelection(div.textContent.length);
+          range.setStart();
+          range.collapse(true);
+          sel.removeAllRanges();
+          sel.addRange(range);
         }, 0);
       }
       e.preventDefault();
