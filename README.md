@@ -12,8 +12,9 @@ https://github.com/KANYEcode/stickers/raw/main/Cozytv%20Premium.user.js
 
 There is also a userscript which you can add to tampermonkey. It can save stickers, as well as search/add inline using : or |
 
-For examples
+Examples:
 > :duck
+
 > |pepe
 
-will display pepe stickers.
+will display duck or pepe stickers.
