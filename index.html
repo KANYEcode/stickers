@@ -8,6 +8,10 @@
 
     <link rel="stylesheet" href="styles.css" />
     <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@1.1.0/dist/css/materialize.min.css"
     />
@@ -19,13 +23,18 @@
     <script defer type="module" src="main.js"></script>
   </head>
   <body>
-    <div class="row">
-      <div class="col s12">
-        <div class="row">
-          <div class="input-field col s12">
-            <input type="text" id="searchBox" class="autocomplete" />
-            <label for="searchBox">Search</label>
-          </div>
+    <div class="container">
+      <div class="row valign-wrapper">
+        <div class="input-field col s12 l9">
+          <input type="text" id="searchBox" class="autocomplete" />
+          <label for="searchBox">Search</label>
+        </div>
+        <div class="col l3 hide-on-med-and-down">
+          <a
+            class="waves-effect waves-light btn cyan"
+            href="https://github.com/KANYEcode/stickers/raw/main/Cozytv%20Premium.user.js"
+            ><i class="material-icons left">keyboard</i>userscript</a
+          >
         </div>
       </div>
     </div>
