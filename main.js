@@ -1,6 +1,6 @@
 const copyToClipboard = (str) => {
   navigator.clipboard.writeText(`ǀ${str}ǀ`);
-  M.toast({ text: `Copied ${str}` });
+  M.toast({ text: `Copied ${str}`, classes: "cyan" });
 };
 
 const sanitize = (str) =>
@@ -331,14 +331,16 @@ csv
   });
 
 const searchBox = document.getElementById("searchBox");
-searchBox.addEventListener("input", (e) =>
+const updateResults = (e) => {
   container.childNodes.forEach((i) =>
     i.classList.toggle(
       "hidden",
       !i.getAttribute("tags").includes(sanitize(searchBox.value))
     )
-  )
-);
+  );
+};
+searchBox.addEventListener("change", updateResults);
+searchBox.addEventListener("input", updateResults);
 const instances = M.Autocomplete.init(searchBox, {
   data: uniques,
   limit: 1,
@@ -371,7 +373,7 @@ for (let user of [...cards, ...users]) {
   });
 }
 
-for (let i = 90; i < 5000; i++) {
+const addImage = (i, max) => {
   const code = i.toString(36);
   const url = `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`;
 
@@ -382,11 +384,17 @@ for (let i = 90; i < 5000; i++) {
   img.title = `${code}`;
   img.setAttribute("tags", labels[code]);
 
-  img.addEventListener("error", () => img.remove());
+  img.addEventListener("error", () => {
+    img.remove();
+  });
   container.appendChild(img);
 
   img.addEventListener("load", () => {
     img.classList.remove("hidden");
     img.addEventListener("click", () => copyToClipboard(img.title));
   });
+};
+
+for (let i = 90; i < 5000; i++) {
+  addImage(i);
 }
