@@ -348,53 +348,42 @@ const instances = M.Autocomplete.init(searchBox, {
 
 const container = document.getElementById("container");
 
-for (let user of [...cards, ...users]) {
-  const url = user.url;
-
+const addImage = (url, code, title, tags) => {
   const img = new Image();
-  img.classList.add("hidden");
 
+  // img.src = `assets/${code}.webp`;
   img.src = url;
-  img.title = `${user.name}`;
-  img.setAttribute("tags", user.name);
-
-  img.addEventListener("error", () => img.remove());
-  container.appendChild(img);
-
-  img.addEventListener("load", () => {
-    img.classList.remove("hidden");
-    img.addEventListener("click", () =>
-      copyToClipboard(
-        user.url
-          .replace("https://prd.foxtrotstream.xyz/a", "..")
-          .replace(".webp", "")
-      )
-    );
-  });
-}
-
-const addImage = (i, max) => {
-  const code = i.toString(36);
-  const url = `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`;
-
-  const img = new Image();
+  img.title = title;
+  img.setAttribute("tags", tags);
   img.classList.add("hidden");
-
-  img.src = url;
-  img.title = `${code}`;
-  img.setAttribute("tags", labels[code]);
 
   img.addEventListener("error", () => {
+    // img.src !== url ? (img.src = url) : img.remove();
     img.remove();
   });
-  container.appendChild(img);
 
   img.addEventListener("load", () => {
     img.classList.remove("hidden");
-    img.addEventListener("click", () => copyToClipboard(img.title));
+    img.addEventListener("click", () => {
+      const prefix = url.match(/\/(av|pcrds)\//);
+      if (prefix) {
+        code = `../${prefix[1]}/` + code;
+      }
+      copyToClipboard(code);
+    });
   });
+
+  container.appendChild(img);
 };
 
+for (let user of [...cards, ...users]) {
+  const url = user.url;
+  const code = url.match(/\/([^\/]*).webp/)[1];
+  addImage(url, code, user.name, user.name);
+}
+
 for (let i = 90; i < 5000; i++) {
-  addImage(i);
+  const code = i.toString(36);
+  const url = `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`;
+  addImage(url, code, code, labels[code]);
 }
