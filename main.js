@@ -341,10 +341,11 @@ const updateResults = (e) => {
 };
 searchBox.addEventListener("change", updateResults);
 searchBox.addEventListener("input", updateResults);
-const instances = M.Autocomplete.init(searchBox, {
+M.Autocomplete.init(searchBox, {
   data: uniques,
   limit: 1,
 });
+M.Tooltip.init(document.querySelectorAll(".tooltipped"));
 
 const container = document.getElementById("container");
 
