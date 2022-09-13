@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Cozy.tv Premium
 // @namespace    Cozy.tv
-// @version      1.1.5
+// @version      1.1.6
 // @description  Display & save any cozy.tv sticker
 // @author       KANYE
 // @match        https://cozy.tv/*
@@ -284,10 +284,7 @@ function setObservers() {
     if ((chat = document.querySelector(".overflow-x-hidden.h-full"))) {
       clearInterval(poll);
       reloadObserver.disconnect();
-      reloadObserver.observe(document.querySelector(".notbody"), {
-        childList: true,
-      });
-      reloadObserver.observe(document.querySelector(".notbody .flex"), {
+      reloadObserver.observe(document.querySelector('.flex.flex-col.w-full.overflow-hidden.rounded'), {
         childList: true,
       });
       inputObserver.disconnect();
