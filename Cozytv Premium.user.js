@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Cozy.tv Premium
 // @namespace    Cozy.tv
-// @version      1.2.0
+// @version      1.2.1
 // @description  Display & save any cozy.tv sticker
 // @author       KANYE
 // @match        https://cozy.tv/*
@@ -427,6 +427,7 @@ document.addEventListener("click", (e) => {
           "sticker-url"
         )}" data-sticker="${t.getAttribute("sticker-id")}">`
       );
+    document.querySelector("div[contenteditable]").focus();
   } else if (t.classList.contains("show-all-stickers")) {
     t.closest(".z-40.bottom-0").children[2].replaceWith(
       stickers.content.querySelector("div").cloneNode(true)
