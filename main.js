@@ -59,6 +59,10 @@ const users = [
     url: "https://prd.foxtrotstream.xyz/a/av/28d7e71f6e8b8c71dc35c8ff8ac36159.webp",
   },
   {
+    name: "veyta",
+    url: "https://prd.foxtrotstream.xyz/a/av/a32918b3faa7a6a267bfb37a18cbed41.webp",
+  },
+  {
     name: "augie",
     url: "https://prd.foxtrotstream.xyz/a/av/2d0569ea03e55d1d8d88cab98ea41fdb.webp",
   },
@@ -137,6 +141,10 @@ const users = [
   {
     name: "paultown",
     url: "https://prd.foxtrotstream.xyz/a/av/5c1f12973bfd23d8eda10b0bc4c6b070.webp",
+  },
+  {
+    name: "paultown",
+    url: "https://prd.foxtrotstream.xyz/a/av/0a3079f022469d88236035b7a1c90fde.webp",
   },
   {
     name: "woozuh",
@@ -245,6 +253,30 @@ const users = [
   {
     name: "aidenprojects",
     url: "https://prd.foxtrotstream.xyz/a/av/7c8bd9c6daed345223cced622de428e3.webp",
+  },
+  {
+    name: "lofi",
+    url: "https://prd.foxtrotstream.xyz/a/av/008691625e77f867aa291b4a161d4f48.webp",
+  },
+  {
+    name: "cozyplays",
+    url: "https://prd.foxtrotstream.xyz/a/av/9f3be2e86182774e5a64663b8fc0d05e.webp",
+  },
+  {
+    name: "dawson",
+    url: "https://prd.foxtrotstream.xyz/a/av/f5973afcd155668b462de5e613b439f6.webp",
+  },
+  {
+    name: "salvopancakes",
+    url: "https://prd.foxtrotstream.xyz/a/av/4103c704eaa4743cfbdab927587a53c8.webp",
+  },
+  {
+    name: "lporiginalg",
+    url: "https://prd.foxtrotstream.xyz/a/av/86cd6e0c0816a4235238c71918e44401.webp",
+  },
+  {
+    name: "patdixon",
+    url: "https://prd.foxtrotstream.xyz/a/av/a49f4558072eefef765a4a9f04943858.webp",
   },
 ];
 
