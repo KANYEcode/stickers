@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Cozy.tv Premium
 // @namespace    Cozy.tv
-// @version      1.2.3
+// @version      1.3.0
 // @description  Display & save any cozy.tv sticker
 // @author       KANYE
 // @match        https://cozy.tv/*
@@ -196,7 +196,7 @@ let stickerMenuSelectedIndex = 0;
 const inputObserver = new MutationObserver((changes) => {
   let text = changes[0].target.textContent;
   let code = text
-    .match(/[\|\:]([A-Za-z0-9])*/g)
+    .match(/[\|\:]([A-Za-z0-9])*$/g)
     ?.pop()
     ?.slice(1);
   if (code) {
@@ -343,14 +343,13 @@ document.addEventListener("keydown", (e) => {
         let div = document.querySelector("div[contenteditable=true]");
         elem.click();
         setTimeout(() => {
-          div.focus();
-          div.dispatchEvent(new Event("focus"));
           let range = document.createRange();
-          let sel = window.getSelection(div.textContent.length);
-          range.setStart();
-          range.collapse(true);
+          range.selectNodeContents(div)
+          range.collapse(false);
+          let sel = window.getSelection();
           sel.removeAllRanges();
           sel.addRange(range);
+          div.focus();
         }, 0);
       }
       e.preventDefault();
@@ -416,7 +415,7 @@ document.addEventListener("click", (e) => {
     if (t.classList.contains("inlinesticker")) {
       document.querySelector("div[contenteditable]").innerHTML = document
         .querySelector("div[contenteditable]")
-        .innerHTML.replace(/[\|\:]([A-Za-z0-9])*/, "");
+        .innerHTML.replace(/[\|\:]([A-Za-z0-9])*$/, "");
       document.querySelector("div[contenteditable]");
     }
     document
@@ -427,7 +426,7 @@ document.addEventListener("click", (e) => {
           "sticker-url"
         )}" data-sticker="${t.getAttribute("sticker-id")}">`
       );
-    document.querySelector("div[contenteditable]").focus();
+
   } else if (t.classList.contains("show-all-stickers")) {
     t.closest(".z-40.bottom-0").children[2].replaceWith(
       stickers.content.querySelector("div").cloneNode(true)
