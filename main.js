@@ -147,6 +147,10 @@ const users = [
     url: "https://prd.foxtrotstream.xyz/a/av/0a3079f022469d88236035b7a1c90fde.webp",
   },
   {
+    name: "paultown",
+    url: "https://prd.foxtrotstream.xyz/a/av/ec23f202544ff644a93d56aff2445d3d.webp",
+  },
+  {
     name: "woozuh",
     url: "https://prd.foxtrotstream.xyz/a/av/4f3f4d178561c48687db2cc5a37ec387.webp",
   },
@@ -277,6 +281,22 @@ const users = [
   {
     name: "patdixon",
     url: "https://prd.foxtrotstream.xyz/a/av/a49f4558072eefef765a4a9f04943858.webp",
+  },
+  {
+    name: "patdixon",
+    url: "https://prd.foxtrotstream.xyz/a/av/6bc23be01d7f5507a3a6a70dc5ffd02b.webp",
+  },
+  {
+    name: "joeldavis",
+    url: "https://prd.foxtrotstream.xyz/a/av/940568c00f04c9d00fb6fdddbe258659.webp",
+  },
+  {
+    name: "loulz",
+    url: "https://prd.foxtrotstream.xyz/a/av/48b7ef3cbbcb0a2233573362b7867093.webp",
+  },
+  {
+    name: "joshhowes",
+    url: "https://prd.foxtrotstream.xyz/a/av/052a66f0fb1d4cece19580e6fe523db8.webp",
   },
 ];
 
@@ -418,5 +438,7 @@ for (let user of [...cards, ...users]) {
 for (let i = 90; i < 5000; i++) {
   const code = i.toString(36);
   const url = `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`;
-  addImage(url, code, code, labels[code]);
+  if (!code.match(/w|x|y|z/)) {
+    addImage(url, code, code, labels[code]);
+  }
 }
