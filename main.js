@@ -1,3 +1,30 @@
+const reverseChildren = (parent) =>
+  parent.append(...Array.from(parent.childNodes).reverse());
+
+let sortOrder = localStorage.getItem("sortOrder") || "oldest";
+const sortSwitch = document.getElementById("sortSwitch");
+sortSwitch.checked = sortOrder !== "oldest";
+
+const cardBin = document.querySelector(".bin.cards");
+const userBin = document.querySelector(".bin.users");
+const stickerBin = document.querySelector(".bin.stickers");
+
+sortSwitch.addEventListener("change", (event) => {
+  if (
+    (event.currentTarget.checked &&
+      stickerBin.firstElementChild.title === "2i") ||
+    (!event.currentTarget.checked && stickerBin.firstChild.title !== "2i")
+  ) {
+    reverseChildren(cardBin);
+    reverseChildren(userBin);
+    reverseChildren(stickerBin);
+  }
+  localStorage.setItem(
+    "sortOrder",
+    event.currentTarget.checked ? "newest" : "oldest"
+  );
+});
+
 const copyToClipboard = (str) => {
   navigator.clipboard.writeText(`ǀ${str}ǀ`);
   M.toast({ text: `Copied ${str}`, classes: "cyan" });
@@ -298,6 +325,22 @@ const users = [
     name: "joshhowes",
     url: "https://prd.foxtrotstream.xyz/a/av/052a66f0fb1d4cece19580e6fe523db8.webp",
   },
+  {
+    name: "ali",
+    url: "https://prd.foxtrotstream.xyz/a/av/743bf4845962096dc94acbda0976db50.webp",
+  },
+  {
+    name: "stone",
+    url: "https://prd.foxtrotstream.xyz/a/av/dc5ca5a8dd6cc41f73479949879a77e4.webp",
+  },
+  {
+    name: "loomer",
+    url: "https://prd.foxtrotstream.xyz/a/av/62cd6cd2b1820ccd12dce85be62bd1d3.webp",
+  },
+  {
+    name: "jacobengels",
+    url: "https://prd.foxtrotstream.xyz/a/av/37b095ee41074162d1665f7a4d6a67b2.webp",
+  },
 ];
 
 const cards = [
@@ -383,12 +426,23 @@ csv
   });
 
 const searchBox = document.getElementById("searchBox");
+const collapsible = document.querySelector(".collapsible");
+M.Collapsible.init(collapsible, {
+  accordion: false,
+});
+const collapsible_instance = M.Collapsible.getInstance(collapsible);
 const updateResults = (e) => {
-  container.childNodes.forEach((i) =>
+  [...document.querySelectorAll(".bin img")].forEach((i) =>
     i.classList.toggle(
       "hidden",
       !i.getAttribute("tags").includes(sanitize(searchBox.value))
     )
+  );
+
+  [...document.querySelectorAll(".bin")].forEach((bin, index) =>
+    bin.querySelectorAll("img:not(.hidden)").length
+      ? collapsible_instance.open(index)
+      : collapsible_instance.close(index)
   );
 };
 searchBox.addEventListener("change", updateResults);
@@ -399,16 +453,15 @@ M.Autocomplete.init(searchBox, {
 });
 M.Tooltip.init(document.querySelectorAll(".tooltipped"));
 
-const container = document.getElementById("container");
-
-const addImage = (url, code, title, tags) => {
+const addImage = (elem, url, code, title, tags, order = "append") => {
   const img = new Image();
 
   // img.src = `assets/${code}.webp`;
   img.src = url;
   img.title = title;
   img.setAttribute("tags", tags);
-  img.classList.add("hidden");
+  img.style.visibility = "hidden";
+  img.loading = "lazy";
 
   img.addEventListener("error", () => {
     // img.src !== url ? (img.src = url) : img.remove();
@@ -416,6 +469,7 @@ const addImage = (url, code, title, tags) => {
   });
 
   img.addEventListener("load", () => {
+    img.style.visibility = "";
     img.classList.remove("hidden");
     img.addEventListener("click", () => {
       const prefix = url.match(/\/(av|pcrds)\//);
@@ -426,19 +480,47 @@ const addImage = (url, code, title, tags) => {
     });
   });
 
-  container.appendChild(img);
+  order === "append" ? elem.append(img) : elem.prepend(img);
 };
 
-for (let user of [...cards, ...users]) {
+for (let user of cards) {
   const url = user.url;
   const code = url.match(/\/([^\/]*).webp/)[1];
-  addImage(url, code, user.name, user.name);
+  addImage(
+    cardBin,
+    url,
+    code,
+    user.name,
+    user.name,
+    sortSwitch.checked ? "prepend" : "append"
+  );
 }
 
+for (let user of users) {
+  const url = user.url;
+  const code = url.match(/\/([^\/]*).webp/)[1];
+  addImage(
+    userBin,
+    url,
+    code,
+    user.name,
+    user.name,
+    sortSwitch.checked ? "prepend" : "append"
+  );
+}
+
+// Stickers
 for (let i = 90; i < 5000; i++) {
   const code = i.toString(36);
   const url = `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`;
   if (!code.match(/w|x|y|z/)) {
-    addImage(url, code, code, labels[code]);
+    addImage(
+      stickerBin,
+      url,
+      code,
+      code,
+      labels[code],
+      sortSwitch.checked ? "prepend" : "append"
+    );
   }
 }
