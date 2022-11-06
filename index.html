@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cozy Stickers</title>
-
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -23,6 +23,7 @@
     <script defer type="module" src="main.js"></script>
   </head>
   <body>
+    <h2 class="center-align">Cozy Stickers</h2>
     <div class="container">
       <div class="row valign-wrapper">
         <div class="input-field col s12 l9">
@@ -41,8 +42,42 @@
       </div>
     </div>
 
-    <div class="row">
-      <div id="container" class="col s12"></div>
+    <div class="container">
+      <div class="switch">
+        Sort by
+        <label>
+          Oldest
+          <input id="sortSwitch" type="checkbox" />
+          <span class="lever"></span>
+          Newest
+        </label>
+      </div>
+      <ul class="collapsible">
+        <li class="active">
+          <div class="collapsible-header">
+            <i class="material-icons">account_box</i>Cards
+          </div>
+          <div class="collapsible-body">
+            <div class="col s12 bin cards"></div>
+          </div>
+        </li>
+        <li class="active">
+          <div class="collapsible-header">
+            <i class="material-icons">person</i>Users
+          </div>
+          <div class="collapsible-body">
+            <div class="col s12 bin users"></div>
+          </div>
+        </li>
+        <li class="active">
+          <div class="collapsible-header">
+            <i class="material-icons">add_reaction</i>Stickers
+          </div>
+          <div class="collapsible-body">
+            <div class="col s12 bin stickers"></div>
+          </div>
+        </li>
+      </ul>
     </div>
   </body>
 </html>
