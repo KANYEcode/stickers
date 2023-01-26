@@ -178,6 +178,10 @@ const users = [
     url: "https://prd.foxtrotstream.xyz/a/av/ec23f202544ff644a93d56aff2445d3d.webp",
   },
   {
+    name: "paultown",
+    url: "https://prd.foxtrotstream.xyz/a/av/324f7b0dd894a9049446fb877701996d.webp",
+  },
+  {
     name: "woozuh",
     url: "https://prd.foxtrotstream.xyz/a/av/4f3f4d178561c48687db2cc5a37ec387.webp",
   },
@@ -341,6 +345,10 @@ const users = [
     name: "jacobengels",
     url: "https://prd.foxtrotstream.xyz/a/av/37b095ee41074162d1665f7a4d6a67b2.webp",
   },
+  {
+    name: "keithwoods",
+    url: "https://prd.foxtrotstream.xyz/a/av/5cc4ed8e0ac9c5b4e370d0de64ad4eb0.webp",
+  },
 ];
 
 const cards = [
@@ -391,6 +399,10 @@ const cards = [
   {
     name: "veyta",
     url: "https://prd.foxtrotstream.xyz/a/pcrds/57da8459f216829b39a50cffd6231bb2.webp",
+  },
+  {
+    name: "veyta",
+    url: "https://prd.foxtrotstream.xyz/a/av/f409c195aad6237b004b86e21a3e5dfa.webp",
   },
   {
     name: "augie",
