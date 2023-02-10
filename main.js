@@ -90,6 +90,10 @@ const users = [
     url: "https://prd.foxtrotstream.xyz/a/av/a32918b3faa7a6a267bfb37a18cbed41.webp",
   },
   {
+    name: "veyta",
+    url: "https://prd.foxtrotstream.xyz/a/av/f409c195aad6237b004b86e21a3e5dfa.webp",
+  },
+  {
     name: "augie",
     url: "https://prd.foxtrotstream.xyz/a/av/2d0569ea03e55d1d8d88cab98ea41fdb.webp",
   },
@@ -399,10 +403,6 @@ const cards = [
   {
     name: "veyta",
     url: "https://prd.foxtrotstream.xyz/a/pcrds/57da8459f216829b39a50cffd6231bb2.webp",
-  },
-  {
-    name: "veyta",
-    url: "https://prd.foxtrotstream.xyz/a/av/f409c195aad6237b004b86e21a3e5dfa.webp",
   },
   {
     name: "augie",
