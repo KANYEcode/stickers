@@ -134,6 +134,10 @@ const users = [
     url: "https://prd.foxtrotstream.xyz/a/av/9016109bbdcbdfd19debcfaa18a70d5c.webp",
   },
   {
+    name: "partygoy",
+    url: "https://prd.foxtrotstream.xyz/a/av/7030cf0a443cdee752221ce33e5fea3c.webp",
+  },
+  {
     name: "daltonclodfelter",
     url: "https://prd.foxtrotstream.xyz/a/av/79387e6170a097b112805ab83cf4f383.webp",
   },
@@ -424,14 +428,6 @@ const users = [
   {
     name: "keithwoods",
     url: "https://prd.foxtrotstream.xyz/a/av/5cc4ed8e0ac9c5b4e370d0de64ad4eb0.webp",
-  },
-  {
-    name: "partygoy",
-    url: "https://prd.foxtrotstream.xyz/a/av/7030cf0a443cdee752221ce33e5fea3c.webp",
-  },
-  {
-    name: "basedbrant",
-    url: "https://prd.foxtrotstream.xyz/a/av/8dc240b3a3eeef1857c8f11bbb61b1ec.webp",
   },
 ];
 
