@@ -429,6 +429,10 @@ const users = [
     name: "keithwoods",
     url: "https://prd.foxtrotstream.xyz/a/av/5cc4ed8e0ac9c5b4e370d0de64ad4eb0.webp",
   },
+  {
+    name: "dickmasterson",
+    url: "https://prd.foxtrotstream.xyz/a/av/7edc55d1fa2cd4cf08fdb639d5832bb9.webp",
+  },
 ];
 
 const cards = [
