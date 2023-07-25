@@ -4,6 +4,10 @@ body {
   color: white;
 }
 
+.collapsible {
+  user-select: none;
+}
+
 input {
   color: white;
 }
@@ -11,7 +15,15 @@ input {
 img {
   max-width: 64px;
   max-height: 64px;
+}
+
+.collapsible img {
   margin: auto;
+  cursor: copy;
+}
+
+.collapsible img:active {
+  cursor: alias;
 }
 
 .bin {
