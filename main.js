@@ -27,7 +27,11 @@ sortSwitch.addEventListener("change", (event) => {
 
 const copyToClipboard = (str) => {
   navigator.clipboard.writeText(`ǀ${str}ǀ`);
-  M.toast({ text: `Copied ${str}`, classes: "cyan" });
+  // M.toast({ text: `Copied ${str}`, classes: "cyan" });
+  M.toast({
+    unsafeHTML: `<i class="material-icons left">assignment_turned_in</i><img src=${`https://prd.foxtrotstream.xyz/a/stk/${str}.webp`}>`,
+    classes: "cyan white-text",
+  });
 };
 
 const sanitize = (str) =>
@@ -551,6 +555,7 @@ const addImage = (elem, url, code, title, tags, order = "append") => {
   // img.src = `assets/${code}.webp`;
   img.src = url;
   img.title = title;
+  img.draggable = false;
   img.setAttribute("tags", tags);
   img.style.visibility = "hidden";
   img.loading = "lazy";
@@ -563,6 +568,7 @@ const addImage = (elem, url, code, title, tags, order = "append") => {
   img.addEventListener("load", () => {
     img.style.visibility = "";
     img.classList.remove("hidden");
+    // img.classList.add("waves-effect", "waves-light");
     img.addEventListener("click", () => {
       const prefix = url.match(/\/(av|pcrds)\//);
       if (prefix) {
