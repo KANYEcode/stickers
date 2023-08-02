@@ -608,7 +608,7 @@ for (let user of users) {
 }
 
 // Stickers
-for (let i = 90; i < 5000; i++) {
+for (let i = 90; i < 7000; i++) {
   const code = i.toString(36);
   const url = `https://prd.foxtrotstream.xyz/a/stk/${code}.webp`;
   if (!code.match(/w|x|y|z/)) {
